@@ -3,6 +3,7 @@
   "displayName": "pnpm-catalog-manager",
   "version": "1.0.1",
   "publisher": "SalminCode",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/salmin89/pnpm-catalog-manager"
@@ -40,13 +41,15 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.100.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
-    "typescript-eslint": "^8.56.1",
-    "eslint": "^9.39.3",
-    "typescript": "^5.9.3",
+    "@types/vscode": "^1.100.0",
     "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
   }
 }
