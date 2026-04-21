@@ -1,7 +1,7 @@
 {
   "name": "pnpm-catalog-manager",
   "displayName": "pnpm-catalog-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "SalminCode",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   "icon": "icon.png",
   "description": "Manage pnpm catalog dependencies with version checking",
   "engines": {
-    "vscode": "^1.116.0"
+    "vscode": "^1.100.0"
   },
   "categories": [
     "Other"
@@ -40,7 +40,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.116.0",
+    "@types/vscode": "^1.100.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "typescript-eslint": "^8.56.1",
