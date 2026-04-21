@@ -18,8 +18,9 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
+    "lint": "oxlint src",
+    "test": "vscode-test",
+    "publish": "vsce publish && ovsx publish"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -27,11 +28,9 @@
     "@types/vscode": "^1.100.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.39.3",
     "oxfmt": "^0.46.0",
     "oxlint": "^1.61.0",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1"
+    "typescript": "^5.9.3"
   },
   "contributes": {
     "commands": [
