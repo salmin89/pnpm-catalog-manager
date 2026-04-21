@@ -1,71 +1,89 @@
-# pnpm-catalog-manager README
+# pnpm-catalog-manager
 
-This is the README for your extension "pnpm-catalog-manager". After writing up a brief description, we recommend including the following sections.
+A Visual Studio Code extension for managing dependencies in pnpm workspace catalogs. It provides inline version information, update notifications, and quick actions for packages defined in your `pnpm-workspace.yaml` file.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+![PNPM Catalog Manager in action](screenshot.png)
 
-For example if there is an image subfolder under your extension project workspace:
+### Inline Version Decorations
 
-\!\[feature X\]\(images/feature-x.png\)
+When you open a `pnpm-workspace.yaml` file, the extension displays inline decorations next to each package in your `catalog:` and `catalogs:` sections:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- **Outdated packages** show the latest available version in orange (e.g., `-> 2.0.0`)
+- **Up-to-date packages** show `latest` in green
+
+### Hover Information
+
+Hovering over any package line displays detailed information fetched from the npm registry:
+
+- Package description
+- Latest version available
+- Homepage URL
+- Links to view the package on npm and Bundlephobia
+
+### One-Click Updates
+
+When a package has a newer version available, the hover tooltip includes an "Update to X.X.X" link. Clicking this will:
+
+1. Update the version in your `pnpm-workspace.yaml` file
+2. Save the file
+3. Run `pnpm install` to apply the changes
+
+## Supported Catalog Formats
+
+The extension supports both catalog formats in `pnpm-workspace.yaml`:
+
+**Default catalog:**
+```yaml
+catalog:
+  react: 18.3.1
+  typescript: 5.0.0
+```
+
+**Named catalogs:**
+```yaml
+catalogs:
+  react18:
+    react: 18.3.1
+    react-dom: 18.3.1
+  react19:
+    react: 19.0.0
+    react-dom: 19.0.0
+```
+
+## Commands
+
+Open the Command Palette (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux) and search for:
+
+| Command | Description |
+|---------|-------------|
+| `PNPM Catalog: Refresh Outdated Packages` | Manually refresh the outdated packages cache. Use this after making changes outside of VS Code or to force a fresh check. |
+| `PNPM Catalog: Update Package to Latest` | Update a specific package to its latest version. This command is typically invoked via the hover tooltip. |
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- **pnpm** must be installed and available in your PATH
+- A valid `pnpm-workspace.yaml` file in your workspace
 
-## Extension Settings
+## How It Works
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. When you open a `pnpm-workspace.yaml` file, the extension runs `pnpm outdated -r --json` to fetch outdated package information
+2. Results are cached per workspace to avoid repeated calls
+3. Hover information is fetched on-demand from the npm registry and cached for performance
+4. The cache is automatically refreshed when you switch workspaces
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- The extension relies on `pnpm outdated` which requires packages to be installed. If you have a fresh workspace without `node_modules`, run `pnpm install` first.
+- Version decorations may take a moment to appear on first load while the outdated check runs.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release with the following features:
+- Inline version decorations for catalog packages
+- Hover tooltips with package information from npm
+- One-click update to latest version
+- Support for both `catalog:` and named `catalogs:` sections

@@ -172,8 +172,6 @@ async function updateDecorations(editor: vscode.TextEditor) {
 					const range = new vscode.Range(i, line.length, i, line.length);
 					const latestVersion = outdatedCache.get(packageName);
 
-					console.log('Package:', packageName, 'Latest:', latestVersion);
-					
 					if (latestVersion) {
 						outdatedDecorations.push({
 							range,

@@ -1,8 +1,14 @@
 {
   "name": "pnpm-catalog-manager",
   "displayName": "pnpm-catalog-manager",
-  "description": "",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "SalminCode",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salmin89/pnpm-catalog-manager"
+  },
+  "icon": "icon.png",
+  "description": "Manage pnpm catalog dependencies with version checking",
   "engines": {
     "vscode": "^1.116.0"
   },
