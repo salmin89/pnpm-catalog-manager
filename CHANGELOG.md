@@ -1,8 +1,10 @@
 # Change Log
 
-All notable changes to the "pnpm-catalog-manager" extension will be documented in this file.
+## [1.0.2] - 2025-04-21
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### Changed
+
+- Improved UI update behavior on file changes
 
 ## [1.0.1] - 2025-04-21
 

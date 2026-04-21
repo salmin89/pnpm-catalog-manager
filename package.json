@@ -1,37 +1,18 @@
 {
   "name": "pnpm-catalog-manager",
   "displayName": "pnpm-catalog-manager",
-  "version": "1.0.1",
-  "publisher": "SalminCode",
-  "type": "module",
+  "version": "1.0.2",
+  "description": "Manage pnpm catalog dependencies with version checking",
+  "categories": [
+    "Other"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/salmin89/pnpm-catalog-manager"
   },
-  "icon": "icon.png",
-  "description": "Manage pnpm catalog dependencies with version checking",
-  "engines": {
-    "vscode": "^1.100.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onLanguage:yaml"
-  ],
+  "publisher": "SalminCode",
+  "type": "module",
   "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "pnpm-catalog-manager.refresh",
-        "title": "PNPM Catalog: Refresh Outdated Packages"
-      },
-      {
-        "command": "pnpm-catalog-manager.updateToLatest",
-        "title": "PNPM Catalog: Update Package to Latest"
-      }
-    ]
-  },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
     "compile": "tsc -p ./",
@@ -51,5 +32,24 @@
     "oxlint": "^1.61.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "pnpm-catalog-manager.refresh",
+        "title": "PNPM Catalog: Refresh Outdated Packages"
+      },
+      {
+        "command": "pnpm-catalog-manager.updateToLatest",
+        "title": "PNPM Catalog: Update Package to Latest"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onLanguage:yaml"
+  ],
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.100.0"
   }
 }
